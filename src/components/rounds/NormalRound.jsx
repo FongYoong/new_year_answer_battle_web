@@ -126,7 +126,7 @@ function NormalRound({index, round, ...props}) {
                                         )}
                                     </Stack>
                                     <Stack h='100%' w='100%' align='center' justify='center' p={1} >
-                                        {[...round.answers.slice(5), ...[...Array(10 - round.answers.length)].map(() => undefined)]
+                                        {[...round.answers.slice(5), ...[...Array(5 - round.answers.slice(5).length)].map(() => undefined)]
                                         .map((answer, index) => 
                                             <NormalAnswer key={index} index={index + 5} answer={answer} onClick={onClickAnswer} />
                                         )}

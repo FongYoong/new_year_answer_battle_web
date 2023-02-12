@@ -83,7 +83,7 @@ function LightningRound({index, round, ...props}) {
                                 )}
                             </Stack>
                             <Stack h='100%' w='100%' align='center' justify='center' p={1} >
-                                {[...round.questions.slice(5), ...[...Array(10 - round.questions.length)].map(() => undefined)]
+                                {[...round.questions.slice(5), ...[...Array(5 - round.questions.slice(5).length)].map(() => undefined)]
                                 .map((question, index) => 
                                     <LightningQuestion key={index} index={index + 5} question={question} />
                                 )}
