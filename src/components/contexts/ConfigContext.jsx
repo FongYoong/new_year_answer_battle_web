@@ -75,7 +75,7 @@ export function generateConfigFunctions (config, setConfig) {
             setConfig({
                 ...config,
                 currentPage: config.currentRound == 0 ? 'home' : 'round',
-                currentRound: config.currentRound == 0 ? undefined : config.currentRound - 1
+                currentRound: config.currentRound == 0 ? 0 : config.currentRound - 1
             })
         },
         jumpToRound: (round_index) => {

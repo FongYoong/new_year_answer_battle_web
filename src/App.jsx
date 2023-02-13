@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { Box, Stack, Flex, Button, Image, Text, transition } from "@chakra-ui/react"
 import { ConfigContext } from './components/contexts/ConfigContext'
 import Toolbar from './components/toolbar/Toolbar'
-import Navigator from './components/navigator/navigator'
+import Navigator from './components/navigator/Navigator'
 import Soundboard from './components/soundboard/Soundboard'
 import Home from './components/home/Home'
 import Editor from './components/editor/Editor'

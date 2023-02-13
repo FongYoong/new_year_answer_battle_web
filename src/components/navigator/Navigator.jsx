@@ -1,8 +1,10 @@
 import { useContext, useMemo } from 'react';
-import { Flex, IconButton } from "@chakra-ui/react"
-import { ImArrowLeft, ImArrowRight } from 'react-icons/im'
+import { Flex, IconButton, useDisclosure } from "@chakra-ui/react"
 import { ConfigContext } from '../contexts/ConfigContext'
 import { MotionBox } from "../MotionComponents";
+import PagesModal from './PagesModal';
+import { ImArrowLeft, ImArrowRight } from 'react-icons/im'
+import { FiMenu } from 'react-icons/fi'
 
 const NavigatorButton = ({label, icon, ...props}) => {
 
@@ -18,6 +20,7 @@ const NavigatorButton = ({label, icon, ...props}) => {
 function Navigator({...props}) {
 
     const [config, configFunctions] = useContext(ConfigContext);
+    const modalFunctions = useDisclosure(); // { isOpen, onOpen, onClose }
 
     const animate = useMemo(() => {
         if (config.currentPage == 'round' && config.currentRound !== undefined) {
@@ -47,9 +50,14 @@ function Navigator({...props}) {
                 // ease: "easeInOut"
             }}
         >
+            <PagesModal modalFunctions={modalFunctions} />
             <Flex align='center' justify='center' p={2}
                 {...props}
             >
+                <NavigatorButton
+                    label='navigate_menu' icon={<FiMenu color='white' size='1.2em' />}
+                    onClick={modalFunctions.onOpen}
+                />
                 <NavigatorButton
                     label='previous_button' icon={<ImArrowLeft color='white' size='1.2em' />}
                     onClick={configFunctions.previousRound}

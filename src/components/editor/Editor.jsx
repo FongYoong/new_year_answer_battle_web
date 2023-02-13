@@ -22,7 +22,6 @@ import { FaSave } from 'react-icons/fa'
 import { GrRevert } from 'react-icons/gr'
 import { MdOutlineStickyNote2 } from 'react-icons/md'
 
-
 function Editor({...props}) {
 
     const toast = useToast();
