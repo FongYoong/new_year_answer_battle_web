@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Stack, Flex, Text, IconButton } from "@chakra-ui/react"
 import { ImCross } from 'react-icons/im'
 import { BsArrowRepeat } from 'react-icons/bs'
 import { MotionBox } from '../MotionComponents'
-import { Howl, Howler } from 'howler';
-import responseWrongSound from '../../assets/audio/response_wrong.mp3'
+import { SoundContext } from '../contexts/SoundContext'
 
 function BigX({strikes, ...props}) {
 
@@ -23,10 +22,12 @@ function BigX({strikes, ...props}) {
             pos='fixed' left='0vw' top='20vh'
             variants={{
                 show: {
-                    opacity: 1
+                    opacity: 1,
+                    display: "inline-block"
                 },
                 hide: {
-                    opacity: 0
+                    opacity: 0,
+                    transitionEnd: { display: "none" }
                 },
             }}
             initial='hide'
@@ -55,13 +56,8 @@ function BigX({strikes, ...props}) {
 }
 
 function Strikes({show, strikes, onClick, ...props}) {
-    
-    const [wrongSoundObject, setWrongSoundObject] = useState(new Howl({
-        src: [responseWrongSound],
-        autoplay: false,
-        loop: false,
-        volume: 1,
-    }))
+
+    const [soundFunctions] = useContext(SoundContext);
 
     return (
         <Stack spacing={0} align='center' justify='center' {...props} >
@@ -72,8 +68,7 @@ function Strikes({show, strikes, onClick, ...props}) {
                 icon={strikes < 3 ? <ImCross color='white' size='1.2em' /> : <BsArrowRepeat color='white' size='1.2em' />}
                 onClick={() => {
                     if (strikes < 3) {
-                        Howler.stop();
-                        wrongSoundObject.play();
+                        soundFunctions.play('wrong')
                     }
                     onClick();
                 }}

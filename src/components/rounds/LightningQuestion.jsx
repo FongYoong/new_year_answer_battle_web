@@ -8,9 +8,7 @@ import { Box, Stack, Flex, IconButton, Button, Text,
 } from "@chakra-ui/react"
 import { MotionBox } from '../MotionComponents'
 import { ConfigContext } from '../contexts/ConfigContext'
-import { Howl, Howler } from 'howler';
-import correctSound from '../../assets/audio/reveal_answer.mp3'
-import wrongSound from '../../assets/audio/response_wrong.mp3'
+import { SoundContext } from '../contexts/SoundContext';
 import { AiOutlinePlus } from 'react-icons/ai'
 import { ImCross } from 'react-icons/im'
 
@@ -18,24 +16,25 @@ function LightningQuestion({index, question, ...props}) {
     const [showQuestion, setShowQuestion] = useState(false);
     const [questionStatus, setQuestionStatus] = useState(undefined); // undefined, correct, wrong
     const [config, configFunctions] = useContext(ConfigContext);
+    const [soundFunctions] = useContext(SoundContext);
 
     useEffect(() => {
         setShowQuestion(false)
         setQuestionStatus(undefined)
     }, [config.currentPage, config.currentRound])
 
-    const [correctSoundObject, setCorrectSoundObject] = useState(new Howl({
-        src: [correctSound],
-        autoplay: false,
-        loop: false,
-        volume: 1,
-    }))
-    const [wrongSoundObject, setWrongSoundObject] = useState(new Howl({
-        src: [wrongSound],
-        autoplay: false,
-        loop: false,
-        volume: 1,
-    }))
+    // const [correctSoundObject, setCorrectSoundObject] = useState(new Howl({
+    //     src: [correctSound],
+    //     autoplay: false,
+    //     loop: false,
+    //     volume: 1,
+    // }))
+    // const [wrongSoundObject, setWrongSoundObject] = useState(new Howl({
+    //     src: [wrongSound],
+    //     autoplay: false,
+    //     loop: false,
+    //     volume: 1,
+    // }))
     
     return (
         <Flex pos='relative' w='100%' h='20%'
@@ -111,8 +110,7 @@ function LightningQuestion({index, question, ...props}) {
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         setQuestionStatus('correct');
-                                            Howler.stop();
-                                            correctSoundObject.play();
+                                        soundFunctions.play('correct');
                                     }}
                                 />
                                 <IconButton w='10%' h='100% !important' size={['xs', 'sm', 'md']} colorScheme='red' borderRadius='0em'
@@ -121,8 +119,7 @@ function LightningQuestion({index, question, ...props}) {
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         setQuestionStatus('wrong');
-                                        Howler.stop();
-                                        wrongSoundObject.play();
+                                        soundFunctions.play('wrong');
                                     }}
                                 />
                             </Flex>

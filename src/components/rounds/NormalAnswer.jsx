@@ -8,23 +8,23 @@ import { Box, Stack, Flex, Button, Text,
 } from "@chakra-ui/react"
 import { MotionBox } from '../MotionComponents'
 import { ConfigContext } from '../contexts/ConfigContext'
-import { Howl, Howler } from 'howler';
-import revealSound from '../../assets/audio/reveal_answer.mp3'
+import { SoundContext } from '../contexts/SoundContext';
 
 function NormalAnswer({index, answer, onClick, ...props}) {
     const [showAnswer, setShowAnswer] = useState(false);
     const [config, configFunctions] = useContext(ConfigContext);
+    const [soundFunctions] = useContext(SoundContext);
 
     useEffect(() => {
         setShowAnswer(false)
     }, [config.currentPage, config.currentRound])
 
-    const [revealSoundObject, setRevealSoundObject] = useState(new Howl({
-        src: [revealSound],
-        autoplay: false,
-        loop: false,
-        volume: 1,
-    }))
+    // const [revealSoundObject, setRevealSoundObject] = useState(new Howl({
+    //     src: [revealSound],
+    //     autoplay: false,
+    //     loop: false,
+    //     volume: 1,
+    // }))
     
     return (
         <Box pos='relative' w='100%' h='20%'
@@ -53,8 +53,7 @@ function NormalAnswer({index, answer, onClick, ...props}) {
                     }}
                     onClick={() => {
                         setShowAnswer(true);
-                        Howler.stop();
-                        revealSoundObject.play();
+                        soundFunctions.play('correct')
                         onClick(answer.points);
                     }}
                 >

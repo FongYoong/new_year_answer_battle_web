@@ -9,6 +9,7 @@ PopoverArrow,
 PopoverCloseButton,
 } from "@chakra-ui/react"
 import { ConfigContext } from '../contexts/ConfigContext'
+import { SoundContext } from '../contexts/SoundContext'
 import TypeIt from "typeit-react";
 import { MotionBox } from '../MotionComponents'
 import QuestionButton from './QuestionButton'
@@ -22,6 +23,7 @@ import DelayedUnmount from '../DelayedUnmount';
 
 function NormalRound({index, round, ...props}) {
     const [config, configFunctions] = useContext(ConfigContext);
+    const [soundFunctions] = useContext(SoundContext);
     const [currentPhase, setCurrentPhase] = useState('initial'); // initial, show_question, hide_question
     const [unassignedPoints, setUnassignedPoints] = useState(0);
     const [strikes, setStrikes] = useState(0);
@@ -35,6 +37,7 @@ function NormalRound({index, round, ...props}) {
             return'left'
         }
         else {
+            soundFunctions.play('themeRound')
             return 'show'
         }
     }, [config.currentPage, config.currentRound, index])

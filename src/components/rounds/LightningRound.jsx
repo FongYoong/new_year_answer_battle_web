@@ -1,6 +1,7 @@
 import { useState, useRef, useContext, useMemo, useEffect } from 'react'
 import { Flex, Stack, Image, Text, IconButton, Button } from "@chakra-ui/react"
 import { ConfigContext } from '../contexts/ConfigContext'
+import { SoundContext } from '../contexts/SoundContext'
 import { MotionBox } from '../MotionComponents'
 import PartialScoreboard from './PartialScoreboard';
 import Timer from './Timer';
@@ -12,6 +13,7 @@ import DelayedUnmount from '../DelayedUnmount';
 
 function LightningRound({index, round, ...props}) {
     const [config, configFunctions] = useContext(ConfigContext);
+    const [soundFunctions] = useContext(SoundContext);
     const [currentPhase, setCurrentPhase] = useState('initial'); // initial
 
     const animate = useMemo(() => {
@@ -22,6 +24,7 @@ function LightningRound({index, round, ...props}) {
             return'left'
         }
         else {
+            soundFunctions.play('themeRound')
             return 'show'
         }
     }, [config.currentPage, config.currentRound, index])

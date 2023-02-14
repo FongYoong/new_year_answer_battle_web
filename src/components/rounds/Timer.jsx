@@ -1,13 +1,12 @@
 import { useState, useEffect, useContext, useMemo } from 'react'
 import { Stack, Flex, Text, IconButton, Button } from "@chakra-ui/react"
 import { ConfigContext } from '../contexts/ConfigContext'
-import { Howl, Howler } from 'howler';
+import { SoundContext } from '../contexts/SoundContext'
 import createCountdown from 'create-countdown'
-// import tickSound from '../../assets/audio/tick.mp3'
-import timerEndSound from '../../assets/audio/timer_end.mp3'
 
 function Timer({show, timerSeconds, ...props}) {
     const [config, configFunctions] = useContext(ConfigContext);
+    const [soundFunctions] = useContext(SoundContext);
     const [timerState, setTimerState] = useState('initial') // initial, run, end
     const [timerPause, setTimerPause] = useState(false)
     const [timerOutput, setTimerOutput] = useState(`${timerSeconds} s`)
@@ -21,27 +20,13 @@ function Timer({show, timerSeconds, ...props}) {
             {
                 listen: ({hh, mm, ss}) => {
                     setTimerOutput(`${mm}:${ss}`);
-                    // Howler.stop();
-                    // tickSoundObject.play();
+                    // soundFunctions.play('tick')
                 },
                 done: () => {
                     endTimer(true)
             }
         });
     }, [timerSeconds])
-
-    // const [tickSoundObject, setTickSoundObject] = useState(new Howl({
-    //     src: [tickSound],
-    //     autoplay: false,
-    //     loop: false,
-    //     volume: 1,
-    // }))
-    const [timerEndSoundObject, setTimerEndSoundObject] = useState(new Howl({
-        src: [timerEndSound],
-        autoplay: false,
-        loop: false,
-        volume: 1,
-    }))
 
     useEffect(() => {
         endTimer(false)
@@ -67,8 +52,7 @@ function Timer({show, timerSeconds, ...props}) {
         setTimerState('initial')
         setTimerPause(false)
         if (playSound) {
-            Howler.stop();
-            timerEndSoundObject.play();
+            soundFunctions.play('timerEnd')
         }
     }
 

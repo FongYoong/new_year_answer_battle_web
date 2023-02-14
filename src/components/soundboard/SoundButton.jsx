@@ -1,15 +1,10 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 import { Stack, Button, Text, Image } from "@chakra-ui/react"
-import { Howl, Howler } from 'howler';
+import { SoundContext } from '../contexts/SoundContext';
 
-function SoundButton({label, icon, sound=undefined, ...props}) {
+function SoundButton({label, icon, sound, ...props}) {
 
-    const [soundObject, setSoundbject] = useState(new Howl({
-        src: [sound],
-        autoplay: false,
-        loop: false,
-        volume: 1,
-    }))
+    const [soundFunctions] = useContext(SoundContext);
 
     return (
         <Stack spacing={0} align='center'>
@@ -20,8 +15,7 @@ function SoundButton({label, icon, sound=undefined, ...props}) {
             </Text>
             <Button
                 onClick={() => {
-                    Howler.stop();
-                    soundObject.play();
+                    soundFunctions.play(sound)
                 }}
                 variant='ghost'
                 {...props}
