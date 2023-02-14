@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, createContext } from 'react';
 import { default_rounds } from '../../lib/rounds'
-import { load_config_local_storage, save_config_local_storage } from '../../lib/config';
+import { load_config_local_storage, save_config_local_storage, load_config_file, save_config_file } from '../../lib/config';
 
 export const initial_config = {
     currentPage: 'home', // home, round, editor
@@ -60,7 +60,7 @@ export function generateConfigFunctions (config, setConfig) {
         nextRound: () => {
             let nextRound;
             if (config.currentRound !== undefined) {
-                nextRound = config.currentRound + 1
+                nextRound = (config.currentRound < config.rounds.length - 1) ? config.currentRound + 1 : config.currentRound
             }
             else {
                 nextRound = 0;
@@ -93,12 +93,6 @@ export function generateConfigFunctions (config, setConfig) {
                 })
             }
         },
-        // jumpToPage : (nextPage) => {
-        //     setConfig({
-        //         ...config,
-        //         currentPage: nextPage
-        //     })
-        // },
         changePoints : (team, new_points) => {
             setConfig({
                 ...config,
@@ -110,15 +104,19 @@ export function generateConfigFunctions (config, setConfig) {
         },
         setNewConfig: (newConfig) => {
             setConfig(newConfig)
+        },
+        saveFile: () => {
+            return save_config_file(config);
+        },
+        loadFile: async() => {
+            const data = await load_config_file();
+            setConfig(data);
         }
     }
 }
 
 export const ConfigProvider = ({children}) => {
-    const [config, setConfig] = useState({
-        ...initial_config,
-        rounds: []
-    });
+    const [config, setConfig] = useState(initial_config);
     const [configLoaded, setConfigLoaded] = useState(false);
     const configFunctions = useMemo(() => generateConfigFunctions(config, setConfig), [config, setConfig])
   
@@ -144,7 +142,23 @@ export const ConfigProvider = ({children}) => {
         }
         setConfigLoaded(true)
     }, [])
-  
+
+    useEffect(() => {
+        function handleKeyDown(e) {
+            if (config.currentPage == 'round' && config.currentRound !== undefined) {
+                if (e.key == "ArrowLeft") {
+                    configFunctions.previousRound();
+                }
+                else if (e.key == "ArrowRight") {
+                    configFunctions.nextRound();
+                }
+            }
+        }
+        document.addEventListener('keydown', handleKeyDown);
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        }
+    }, [configFunctions])
 
     return (
         <ConfigContext.Provider value={[config, configFunctions]}>

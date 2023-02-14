@@ -16,6 +16,7 @@
     "deep-equal": "^2.2.0",
     "framer-motion": "^9.0.1",
     "howler": "^2.2.3",
+    "json-stringify-pretty-compact": "^4.0.0",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18.2.0",

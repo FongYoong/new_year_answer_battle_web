@@ -51,7 +51,7 @@ function Editor({...props}) {
             status: 'success',
             duration: 1500,
             isClosable: true,
-        })
+        });
     }
 
     const configHasChanged = !deepEqual(tempConfig, config);

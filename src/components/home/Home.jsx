@@ -1,5 +1,5 @@
-import { useEffect, useContext } from 'react'
-import { Button, Flex, Stack } from "@chakra-ui/react"
+import { useContext } from 'react'
+import { Button, Flex, Stack, useToast } from "@chakra-ui/react"
 import { ConfigContext } from '../contexts/ConfigContext'
 import Globe from './Globe'
 import Curtains from './Curtains'
@@ -11,6 +11,7 @@ import { RiFileDownloadLine, RiFileUploadLine } from 'react-icons/ri'
 
 function Home({...props}) {
 
+    const toast = useToast();
     const [config, configFunctions] = useContext(ConfigContext);
     const show = config.currentPage == 'home';
     
@@ -58,12 +59,32 @@ function Home({...props}) {
                                 Editor
                             </Button>
                             <Button leftIcon={<RiFileDownloadLine size='1.5em' />}
-                                onClick={configFunctions.saveFile}
+                                onClick={() => {
+                                    configFunctions.saveFile().then(() => {
+                                        toast({
+                                            title: 'Saved to file',
+                                            position: 'bottom-right',
+                                            status: 'success',
+                                            duration: 1500,
+                                            isClosable: true,
+                                        });
+                                    })
+                                }}
                             >
                                 Save File
                             </Button>
                             <Button leftIcon={<RiFileUploadLine size='1.5em' />}
-                                onClick={configFunctions.loadFile}
+                                onClick={() => {
+                                    configFunctions.loadFile().then(() => {
+                                        toast({
+                                            title: 'Loaded file',
+                                            position: 'bottom-right',
+                                            status: 'success',
+                                            duration: 1500,
+                                            isClosable: true,
+                                        });
+                                    })
+                                }}
                             >
                                 Load File
                             </Button>
