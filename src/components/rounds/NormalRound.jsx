@@ -58,6 +58,8 @@ function NormalRound({index, round, ...props}) {
         }
     }
 
+    const show = animate == 'show';
+
     return (
         <MotionBox
             pos='absolute' w='100%' h='100%'
@@ -84,15 +86,15 @@ function NormalRound({index, round, ...props}) {
             }}
             {...props}
         >
-            <DelayedUnmount show={animate == 'show'} delay={1100} >
+            <DelayedUnmount show={show} delay={1100} >
                 <Stack spacing={0} w='100%' h='100%' align='center' justify='center'>
                     <Flex pos='relative' align='center' >
-                        <UnassignedPoints unassignedPoints={unassignedPoints} setUnassignedPoints={setUnassignedPoints} />
-                        <PartialScoreboard ml={4} roundIndex={index} />
+                        <UnassignedPoints show={show} unassignedPoints={unassignedPoints} setUnassignedPoints={setUnassignedPoints} />
+                        <PartialScoreboard show={show} roundIndex={index} ml={4} />
                     </Flex>
                     
                     {/* Initial globe and also the question */}
-                    <Stack pos='relative' w='100%' h='100%' align='center' justify='center'
+                    <Stack id={show?'normal_round_main':''} pos='relative' w='100%' h='100%' align='center' justify='center'
                         backgroundImage={roundBacklights} backgroundSize='contain' backgroundRepeat='no-repeat' backgroundPosition='center'
                     >
                         {/* Answer list */}
@@ -201,7 +203,7 @@ function NormalRound({index, round, ...props}) {
 
                     {/* Question buttons and strikes*/}
                     <Flex pos='relative' align='center' justify='center' >
-                        <QuestionButton
+                        <QuestionButton id={show?'normal_round_show_question_button':''}
                             onClick={() => {
                                 const typer = questionTypingInstanceRef.current
                                 const text = round.question
@@ -219,14 +221,14 @@ function NormalRound({index, round, ...props}) {
                         >
                             Show<br/>Question
                         </QuestionButton>
-                        <QuestionButton
+                        <QuestionButton id={show?'normal_round_hide_question_button':''}
                             onClick={() => {
                                 setCurrentPhase('hide_question')
                             }}
                         >
                             Hide<br/>Question
                         </QuestionButton>
-                        <Strikes ml={8} strikes={strikes} onClick={onClickStrike} />
+                        <Strikes show={show} ml={8} strikes={strikes} onClick={onClickStrike} />
                     </Flex>
                 </Stack>
             </DelayedUnmount>

@@ -30,6 +30,8 @@ function LightningRound({index, round, ...props}) {
         setCurrentPhase('initial')
     }, [config.currentPage, config.currentRound])
 
+    const show = animate == 'show';
+
     return (
         <MotionBox
             pos='absolute' w='100%' h='100%'
@@ -56,12 +58,12 @@ function LightningRound({index, round, ...props}) {
             }}
             {...props}
         >
-            <DelayedUnmount show={animate == 'show'} delay={1100} >
+            <DelayedUnmount show={show} delay={1100} >
                 <Stack spacing={0} w='100%' h='100%' align='center' justify='center'>
                     <Flex pos='relative' align='center' >
                         {/* <UnassignedPoints unassignedPoints={unassignedPoints} setUnassignedPoints={setUnassignedPoints} /> */}
-                        <PartialScoreboard roundIndex={index} />
-                        <Timer ml={4} timerSeconds={round.time} />
+                        <PartialScoreboard show={show} roundIndex={index} />
+                        <Timer show={show} timerSeconds={round.time} ml={4} />
                     </Flex>
                     
                     <Stack pos='relative' w='80%' h='100%' py={1} align='center' justify='center'
@@ -73,7 +75,7 @@ function LightningRound({index, round, ...props}) {
                         >
                             How many can you get right in 1 minute?
                         </Text>
-                        <Flex pos='relative' h='100%' w='100%' align='center' justify='center'
+                        <Flex id='lightning_round_main' pos='relative' h='100%' w='100%' align='center' justify='center'
                             bg='rgba(0, 0, 0, 0.5)' borderRadius='0.5em'
                         >
                             <Stack h='100%' w='100%' align='center' justify='center' p={1} >

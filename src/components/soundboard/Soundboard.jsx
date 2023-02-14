@@ -16,11 +16,13 @@ function Soundboard({...props}) {
 
     return (
         <Flex w='100%' justify='flex-end' p={4} {...props} >
-          <SoundButton label='Theme' icon={buttonWinImage} sound={winSound} />
-          <SoundButton label='Lose' icon={buttonLoseImage} sound={loseSound} />
-          <SoundButton label='Cheer' icon={buttonCheerImage} sound={cheerSound} />
-          <SoundButton label='Boo' icon={buttonBooImage} sound={booSound} />
-          <SoundButton label='Silence' icon={buttonSilenceImage} />
+          <Flex id='soundboard' >
+            <SoundButton label='Theme' icon={buttonWinImage} sound={winSound} />
+            <SoundButton label='Lose' icon={buttonLoseImage} sound={loseSound} />
+            <SoundButton label='Cheer' icon={buttonCheerImage} sound={cheerSound} />
+            <SoundButton label='Boo' icon={buttonBooImage} sound={booSound} />
+            <SoundButton label='Silence' icon={buttonSilenceImage} />
+          </Flex>
         </Flex>
     )
 }

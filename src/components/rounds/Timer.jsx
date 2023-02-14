@@ -6,7 +6,7 @@ import createCountdown from 'create-countdown'
 // import tickSound from '../../assets/audio/tick.mp3'
 import timerEndSound from '../../assets/audio/timer_end.mp3'
 
-function Timer({timerSeconds, ...props}) {
+function Timer({show, timerSeconds, ...props}) {
     const [config, configFunctions] = useContext(ConfigContext);
     const [timerState, setTimerState] = useState('initial') // initial, run, end
     const [timerPause, setTimerPause] = useState(false)
@@ -73,7 +73,7 @@ function Timer({timerSeconds, ...props}) {
     }
 
     return (
-        <Stack spacing={1} align='center' justify='center' {...props}
+        <Stack id={show?'round_timer':''} spacing={1} align='center' justify='center' {...props}
             bg="rgba(0,0,0,0.7)" p={4} borderRadius='0.5em'
         >
             <Text color='white' fontWeight='extrabold' fontSize='2xl' >

@@ -53,12 +53,12 @@ function Home({...props}) {
                                     Resume Game
                                 </Button>
                             }
-                            <Button leftIcon={<AiFillEdit size='1.5em' />}
+                            <Button id="home_editor_button" leftIcon={<AiFillEdit size='1.5em' />}
                                 onClick={configFunctions.viewEditor}
                             >
                                 Editor
                             </Button>
-                            <Button leftIcon={<RiFileDownloadLine size='1.5em' />}
+                            <Button id="home_save_button" leftIcon={<RiFileDownloadLine size='1.5em' />}
                                 onClick={() => {
                                     configFunctions.saveFile().then(() => {
                                         toast({
@@ -73,7 +73,7 @@ function Home({...props}) {
                             >
                                 Save File
                             </Button>
-                            <Button leftIcon={<RiFileUploadLine size='1.5em' />}
+                            <Button id="home_load_button" leftIcon={<RiFileUploadLine size='1.5em' />}
                                 onClick={() => {
                                     configFunctions.loadFile().then(() => {
                                         toast({

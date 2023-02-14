@@ -110,7 +110,7 @@ function QuestionsList({questions, setQuestions, bottomRef, ...props}) {
         <DragDropContext onDragEnd={onDragEnd}>
             <Droppable droppableId="droppable-questions">
                 {(provided, snapshot) => (
-                    <Stack pos='relative' maxH={'40vh'} w='100%' p={2}
+                    <Stack pos='relative' maxH={['55vh', '55vh', '40vh']} w='100%' p={2}
                         bg='#4d4d4d' border='2px solid black'
                         overflowY='auto'
                         {...provided.droppableProps}
@@ -198,6 +198,7 @@ function LightningRoundModal({index, originalRound, modalFunctions, ...props}) {
                                 </NumberInput>
                             </FormControl>
                             <QuestionsList questions={round.questions} setQuestions={setQuestions} bottomRef={questionsBottomRef} />
+                            <Text mt={2} >(Click and drag an item to reorder it in the list)</Text>
                         </>
                     }
                 </ModalBody>

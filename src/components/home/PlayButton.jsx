@@ -4,7 +4,7 @@ import { Button, Text } from "@chakra-ui/react"
 function PlayButton({...props}) {
 
     return (
-        <Button
+        <Button id='home_play_button'
             size={['lg', '4xl', '6xl']} px={4} py={2}
             bg='#2596be' _hover={{ bg: '#3fb0d9' }}
             boxShadow='inset 0.2em 0.2em 0.2em 0 rgba(255,255,255,0.5), inset -0.2em -0.2em 0.2em 0 rgba(0,0,0,0.5)'

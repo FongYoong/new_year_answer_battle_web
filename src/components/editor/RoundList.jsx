@@ -80,7 +80,7 @@ function RoundList({rounds, setRounds, ...props}) {
             <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId="droppable-rounds">
                     {(provided, snapshot) => (
-                        <Stack pos='relative' maxH='50vh' h='100%' w='100%' p={2}
+                        <Stack id='editor_rounds_list' pos='relative' maxH='50vh' h='100%' w='100%' p={2}
                             bg='rgba(0, 0, 0, 0.5)'
                             overflowY='auto'
                             {...provided.droppableProps}
@@ -95,7 +95,7 @@ function RoundList({rounds, setRounds, ...props}) {
                     )}
                 </Droppable>
             </DragDropContext>
-            <Flex pt={4} w='100%' align='center' justify='center' >
+            <Flex id='editor_add_round_buttons' pt={4} w='100%' align='center' justify='center' >
                 <Button colorScheme='linkedin' leftIcon={<IoIosAddCircle size='1.5em' />} mr={2}
                     onClick={() => {
                         roundFunctions.addRound('normal')

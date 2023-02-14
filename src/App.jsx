@@ -16,8 +16,6 @@ const App = () => {
 
   const [config, configFunctions] = useContext(ConfigContext);
 
-  // settings, faq, info are modal/dialogs. They are not pages
-
   return (
     <Box
       w='100vw' h='100vh' pos='fixed'

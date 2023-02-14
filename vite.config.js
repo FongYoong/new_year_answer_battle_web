@@ -7,4 +7,13 @@ import { viteSingleFile } from "vite-plugin-singlefile"
 
 export default defineConfig({
   plugins: [react(), viteSingleFile()],
+  optimizeDeps: {
+    esbuildOptions: {
+        // Node.js global to browser globalThis
+        // Added this to resolve 'global' issue with React Joyride
+        define: {
+            global: 'globalThis',
+        },
+    },
+},
 })

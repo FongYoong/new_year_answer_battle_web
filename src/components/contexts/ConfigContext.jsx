@@ -33,12 +33,12 @@ export function generateConfigFunctions (config, setConfig) {
                 currentPage: 'editor',
             })
         },
-        viewSettings: () => {
-            setConfig({
-                ...config,
-                currentPage: 'settings',
-            })
-        },
+        // viewSettings: () => {
+        //     setConfig({
+        //         ...config,
+        //         currentPage: 'settings',
+        //     })
+        // },
         playGame: () => {
             // Reset game state to default
             setConfig({
@@ -119,9 +119,7 @@ export const ConfigProvider = ({children}) => {
     const [config, setConfig] = useState(initial_config);
     const [configLoaded, setConfigLoaded] = useState(false);
     const configFunctions = useMemo(() => generateConfigFunctions(config, setConfig), [config, setConfig])
-  
-    // const [showPresenter, setShowPresenter] = useState(false);
-  
+    
     useEffect(() => {
         if (configLoaded) {
             // save to local storage if changed

@@ -1,23 +1,56 @@
 import { useContext } from "react";
-import { Flex, Button } from "@chakra-ui/react"
-import { IoSettingsOutline } from 'react-icons/io5'
-import { HiPlay } from 'react-icons/hi'
+import { Flex, Button,
+Popover,
+PopoverTrigger,
+PopoverContent,
+PopoverBody,
+PopoverArrow,
+} from "@chakra-ui/react"
 import { ConfigContext } from "../contexts/ConfigContext";
 import { PresenterContext } from "../contexts/PresenterContext";
+import { InfoContext } from "../contexts/InfoContext";
+import { MdInfoOutline } from 'react-icons/md'
+import { HiPlay } from 'react-icons/hi'
 
 function Toolbar({...props}) {
 
-    const [config, configFunctions] = useContext(ConfigContext);
+    // const [config, configFunctions] = useContext(ConfigContext);
     const [showPresenter, presenterFunctions] = useContext(PresenterContext);
+    const [infoFunctions, tour] = useContext(InfoContext);
 
     return (
         <Flex w='100%' justify='flex-end' pt={2} pr={2} {...props} >
-          <Button leftIcon={<IoSettingsOutline size='1.5em' />} size={['sm', 'md']} mr={2}
-            onClick={configFunctions.viewSettings}
-          >
-            Settings
-          </Button >
-          <Button colorScheme='yellow' leftIcon={<HiPlay size='1.5em' />} size={['sm', 'md']}
+          <Popover isLazy arrowSize={16} >
+            <PopoverTrigger>
+              <Button leftIcon={<MdInfoOutline size='1.5em' />} size={['sm', 'md']} mr={2} >
+                Info
+              </Button >
+            </PopoverTrigger>
+            <PopoverContent w='auto' borderRadius='1em' border='2px solid black' borderBottom='' >
+                <PopoverArrow borderTop='2px solid black' />
+                <PopoverBody>
+                    <Flex>
+                        <Button size='md' colorScheme='teal' mr={2}
+                            onClick={(e) => {
+                              infoFunctions.startTour();
+                              e.target.blur();
+                            }}
+                        >
+                            Tour
+                        </Button>
+                        <Button size='md' colorScheme='blue'
+                            onClick={(e) => {
+                              infoFunctions.showFaq();
+                              e.target.blur();
+                            }}
+                        >
+                            FAQ
+                        </Button>
+                    </Flex>
+                </PopoverBody>
+            </PopoverContent>
+          </Popover>
+          <Button id="toolbar_presenter_button" colorScheme='yellow' leftIcon={<HiPlay size='1.5em' />} size={['sm', 'md']}
             onClick={() => presenterFunctions.show()}
           >
             Presenter

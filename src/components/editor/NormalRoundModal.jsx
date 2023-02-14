@@ -113,7 +113,7 @@ function AnswersList({answers, setAnswers, bottomRef, ...props}) {
         <DragDropContext onDragEnd={onDragEnd}>
             <Droppable droppableId="droppable-answers">
                 {(provided, snapshot) => (
-                    <Stack pos='relative' maxH={'40vh'} w='100%' p={2}
+                    <Stack pos='relative' maxH={['55vh', '55vh', '40vh']} w='100%' p={2}
                         bg='#4d4d4d' border='2px solid black'
                         overflowY='auto'
                         {...provided.droppableProps}
@@ -198,6 +198,7 @@ function NormalRoundModal({index, originalRound, modalFunctions, ...props}) {
                                 />
                             </FormControl>
                             <AnswersList answers={round.answers} setAnswers={setAnswers} bottomRef={answersBottomRef} />
+                            <Text mt={2} >(Click and drag an item to reorder it in the list)</Text>
                         </>
                     }
                 </ModalBody>

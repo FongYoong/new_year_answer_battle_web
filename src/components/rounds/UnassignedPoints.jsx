@@ -8,7 +8,7 @@ PopoverArrow,
 } from "@chakra-ui/react"
 import { ConfigContext } from '../contexts/ConfigContext'
 
-function UnassignedPoints({unassignedPoints, setUnassignedPoints, ...props}) {
+function UnassignedPoints({show, unassignedPoints, setUnassignedPoints, ...props}) {
 
     const [config, configFunctions] = useContext(ConfigContext);
 
@@ -19,21 +19,22 @@ function UnassignedPoints({unassignedPoints, setUnassignedPoints, ...props}) {
     }
 
     return (
-        <Stack spacing={2} align='center' justify='center' >
+        <Stack id={show?'normal_round_unassigned_points':''} spacing={2} align='center' justify='center' >
             <Text bg='rgba(0, 161, 62, 1)' color='white' borderRadius='0.5em' p={2}
                 fontSize={['lg', '2xl']} fontWeight='bold' textAlign='center'
             >
                 Unassigned points: {unassignedPoints}
             </Text>
             <Flex w='100%' align='center' justify='flex-end' >
-                <Button size='md' colorScheme='pink' mr={1} 
+                <Button id={show?'normal_round_unassigned_points_reset_button':''}
+                    size='md' colorScheme='pink' mr={1} 
                     onClick={() => setUnassignedPoints(0)}
                 >
                     Reset
                 </Button>
                 <Popover isLazy arrowSize={16} >
                     <PopoverTrigger>
-                        <Button size='md' colorScheme='linkedin' >
+                        <Button className={show?'normal-round-unassigned-points-winner-button':''} size='md' colorScheme='linkedin' >
                             Winner
                         </Button>
                     </PopoverTrigger>

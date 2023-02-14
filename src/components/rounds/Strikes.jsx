@@ -54,7 +54,7 @@ function BigX({strikes, ...props}) {
     )
 }
 
-function Strikes({strikes, onClick, ...props}) {
+function Strikes({show, strikes, onClick, ...props}) {
     
     const [wrongSoundObject, setWrongSoundObject] = useState(new Howl({
         src: [responseWrongSound],
@@ -67,7 +67,7 @@ function Strikes({strikes, onClick, ...props}) {
         <Stack spacing={0} align='center' justify='center' {...props} >
             <BigX strikes={strikes} />
             <Text color='red' fontWeight='extrabold' fontSize='2xl' >{"X".repeat(strikes)}</Text>
-            <IconButton
+            <IconButton id={show?'round_strike_button':''}
                 label='wrong__button' size={['md', 'lg']} colorScheme='red'
                 icon={strikes < 3 ? <ImCross color='white' size='1.2em' /> : <BsArrowRepeat color='white' size='1.2em' />}
                 onClick={() => {

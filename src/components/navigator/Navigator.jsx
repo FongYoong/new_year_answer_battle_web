@@ -51,7 +51,7 @@ function Navigator({...props}) {
             }}
         >
             <PagesModal modalFunctions={modalFunctions} />
-            <Flex align='center' justify='center' p={2}
+            <Flex id='round_navigator' align='center' justify='center' p={2}
                 {...props}
             >
                 <NavigatorButton

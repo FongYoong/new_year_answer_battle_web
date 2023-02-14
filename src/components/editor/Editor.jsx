@@ -80,7 +80,7 @@ function Editor({...props}) {
         >
             <DelayedUnmount show={show} delay={1100} >
                 {tempConfig &&
-                    <Stack spacing={4} w='100%' h='100%' align='center' justify='flex-start' px={2} >
+                    <Stack id='editor_main' spacing={4} w='100%' h='100%' align='center' justify='flex-start' px={2} >
                         <Flex w='100%' align='center' justify='flex-start' >
                             <IconButton mx={4} size='md' borderRadius='full'
                                 aria-label='back to home'
@@ -144,7 +144,7 @@ function Editor({...props}) {
                         </Flex>
                         <RoundList rounds={tempConfig.rounds} setRounds={setRounds}  />
                         <Flex w='100%' align='center' justify='center' >
-                            <Button leftIcon={<FaSave size='1.5em' />} mr={2}
+                            <Button id='editor_save_button' leftIcon={<FaSave size='1.5em' />} mr={2}
                                 isDisabled={!configHasChanged}
                                 onClick={saveConfig}
                             >
@@ -152,7 +152,7 @@ function Editor({...props}) {
                             </Button>
                             <Popover isLazy arrowSize={16} >
                                 <PopoverTrigger>
-                                    <Button leftIcon={<GrRevert size='1.5em' />} mr={2}
+                                    <Button className='editor-undo-button' leftIcon={<GrRevert size='1.5em' />} mr={2}
                                         isDisabled={!configHasChanged}
                                     >
                                         Undo All
@@ -184,7 +184,7 @@ function Editor({...props}) {
                             </Popover>
                             <Popover isLazy arrowSize={16} >
                                 <PopoverTrigger>
-                                    <Button leftIcon={<MdOutlineStickyNote2 size='1.5em' />} >
+                                    <Button className='editor-example-button' leftIcon={<MdOutlineStickyNote2 size='1.5em' />} >
                                         Example
                                     </Button>
                                 </PopoverTrigger>
