@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { Stack, Flex, Button, useDisclosure } from "@chakra-ui/react"
+import { Stack, Flex, Button, Text, useDisclosure } from "@chakra-ui/react"
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import Round from './Round';
 import NormalRoundModal from './NormalRoundModal';
@@ -95,6 +95,7 @@ function RoundList({rounds, setRounds, ...props}) {
                     )}
                 </Droppable>
             </DragDropContext>
+            <Text color='white' bg='rgba(0,0,0,0.7)' borderRadius='0.25em' p={1} >(Click and drag an item to reorder it in the list)</Text>
             <Flex id='editor_add_round_buttons' pt={4} w='100%' align='center' justify='center' >
                 <Button colorScheme='linkedin' leftIcon={<IoIosAddCircle size='1.5em' />} mr={2}
                     onClick={() => {

@@ -164,4 +164,78 @@ export const default_rounds = populateRoundsWithIds([
             },
         ]
     },
+    {
+        type: "normal",
+        question: "Name a common New Year's noise maker",
+        answers: [
+            {
+                answer: "Fireworks",
+                points: 100
+            },
+            {
+                answer: "Kazoos",
+                points: 90
+            },
+            {
+                answer: "Trumpets / Instruments",
+                points: 80
+            },
+            {
+                answer: "Pots & Pans",
+                points: 70
+            },
+            {
+                answer: "Guns",
+                points: 60
+            },
+        ]
+    },
+    {
+        type: "normal",
+        question: "Name Something You Would Buy A Lot Of When Hosting A New Year’s Party",
+        answers: [
+            {
+                answer: "Drinks",
+                points: 100
+            },
+            {
+                answer: "Food",
+                points: 90
+            },
+            {
+                answer: "Decorations",
+                points: 80
+            },
+            {
+                answer: "Utensils",
+                points: 70
+            },
+            {
+                answer: "Noise makers",
+                points: 60
+            },
+        ]
+    },
+    {
+        type: "normal",
+        question: "Name a popular New Year’s Eve TV host",
+        answers: [
+            {
+                answer: "Dick Clark",
+                points: 100
+            },
+            {
+                answer: "Ryan Seacrest",
+                points: 90
+            },
+            {
+                answer: "Carson Daily",
+                points: 80
+            },
+            {
+                answer: "Anderson Cooper",
+                points: 70
+            },
+        ]
+    },
 ]);
