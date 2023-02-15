@@ -17,6 +17,7 @@ import { MotionBox } from '../MotionComponents'
 import DelayedUnmount from '../DelayedUnmount'
 import RoundList from './RoundList'
 import deepEqual from 'deep-equal'
+import { AiTwotoneDelete } from 'react-icons/ai'
 import { IoReturnUpBackOutline } from 'react-icons/io5'
 import { FaSave } from 'react-icons/fa'
 import { GrRevert } from 'react-icons/gr'
@@ -82,18 +83,6 @@ function Editor({...props}) {
                 {tempConfig &&
                     <Stack id='editor_main' spacing={4} w='100%' h='100%' align='center' justify='flex-start' px={2} >
                         <Flex w='100%' align='center' justify='flex-start' >
-                            <IconButton mx={4} size='md' borderRadius='full'
-                                aria-label='back to home'
-                                icon={<IoReturnUpBackOutline size='1.5em' />}
-                                onClick={() => {
-                                    if (configHasChanged) {
-                                        saveAlertFunctions.onOpen();
-                                    }
-                                    else {
-                                        configFunctions.viewHome();
-                                    }
-                                }}
-                            />
                             <AlertDialog
                                 isOpen={saveAlertFunctions.isOpen}
                                 leastDestructiveRef={saveAlertCancelRef}
@@ -136,11 +125,28 @@ function Editor({...props}) {
                                     </AlertDialogContent>
                                 </AlertDialogOverlay>
                             </AlertDialog>
+                            <IconButton mx={4} size='md' borderRadius='full'
+                                aria-label='back to home'
+                                icon={<IoReturnUpBackOutline size='1.5em' />}
+                                onClick={() => {
+                                    if (configHasChanged) {
+                                        saveAlertFunctions.onOpen();
+                                    }
+                                    else {
+                                        configFunctions.viewHome();
+                                    }
+                                }}
+                            />
                             <Text
                                 fontSize={['2xl', '4xl']} fontWeight='extrabold' color='white' textAlign='center'
                             >
                                 Editor
                             </Text>
+                            <Button id='editor_delete_all_button' colorScheme='red' leftIcon={<AiTwotoneDelete size='1.5em' />} ml='auto' mr={2}
+                                onClick={() => setRounds([])}
+                            >
+                                Delete All
+                            </Button>
                         </Flex>
                         <RoundList rounds={tempConfig.rounds} setRounds={setRounds}  />
                         <Flex w='100%' align='center' justify='center' >

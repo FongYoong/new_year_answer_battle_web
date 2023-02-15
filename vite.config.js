@@ -6,14 +6,10 @@ import { viteSingleFile } from "vite-plugin-singlefile"
 // https://www.npmjs.com/package/vite-plugin-singlefile
 
 export default defineConfig({
-  plugins: [react(), viteSingleFile()],
-  optimizeDeps: {
-    esbuildOptions: {
+    plugins: [react(), viteSingleFile()],
+    define: {
         // Node.js global to browser globalThis
         // Added this to resolve 'global' issue with React Joyride
-        define: {
-            global: 'globalThis',
-        },
+        global: 'globalThis',
     },
-},
 })

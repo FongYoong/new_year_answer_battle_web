@@ -132,4 +132,8 @@ export const editor_steps = [
         target: '.editor-example-button',
         content: 'Click this to replace with a sample template.',
     },
+    {
+        target: '#editor_delete_all_button',
+        content: 'Click this to delete all rounds.',
+    },
 ];
