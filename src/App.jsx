@@ -10,7 +10,8 @@ import Home from './components/home/Home'
 import Editor from './components/editor/Editor'
 import NormalRound from './components/rounds/NormalRound'
 import LightningRound from './components/rounds/LightningRound'
-import backgroundImage from "./assets/images/background.jpg"
+import backgroundImage from "@asset_backgroundImage"
+
 
 const App = () => {
 

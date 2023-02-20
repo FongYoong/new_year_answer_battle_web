@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Image } from "@chakra-ui/react"
 import { useAnimationControls } from "framer-motion"
 import { MotionBox } from '../MotionComponents'
-import globeImage from "../../assets/images/globe.png"
+import globeImage from "@asset_globeImage"
 
 function Globe({...props}) {
 

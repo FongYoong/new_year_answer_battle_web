@@ -16,7 +16,7 @@ import QuestionButton from './QuestionButton'
 import NormalAnswer from './NormalAnswer'
 import PartialScoreboard from './PartialScoreboard';
 import Strikes from './Strikes';
-import globeImage from "../../assets/images/globe.png"
+import globeImage from "@asset_globeImage"
 import roundBacklights from "../../assets/images/round_backlights.gif"
 import UnassignedPoints from './UnassignedPoints';
 import DelayedUnmount from '../DelayedUnmount';
@@ -102,7 +102,7 @@ function NormalRound({index, round, ...props}) {
                     >
                         {/* Answer list */}
                         <MotionBox
-                            pos='absolute' w='100%' h='110%'
+                            pos='absolute' w='100%' h='100%'
                             variants={{
                                 show: {
                                     opacity: 1,

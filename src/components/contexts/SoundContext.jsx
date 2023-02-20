@@ -1,14 +1,14 @@
 import { useState, useEffect, createContext } from 'react';
 import { Howl, Howler } from 'howler';
-import themeRoundSound from '../../assets/audio/theme_round.mp3'
-import winSound from '../../assets/audio/response_win.mp3'
-import loseSound from '../../assets/audio/response_lose.mp3'
-import cheerSound from '../../assets/audio/response_cheer.mp3'
-import booSound from '../../assets/audio/response_boo.mp3'
-import correctSound from '../../assets/audio/reveal_answer.mp3'
-import wrongSound from '../../assets/audio/response_wrong.mp3'
+import themeRoundSound from '@asset_themeRoundSound'
+import winSound from '@asset_winSound'
+import loseSound from '@asset_loseSound'
+import cheerSound from '@asset_cheerSound'
+import booSound from '@asset_booSound'
+import correctSound from '@asset_correctSound'
+import wrongSound from '@asset_wrongSound'
 // import tickSound from '../../assets/audio/tick.mp3'
-import timerEndSound from '../../assets/audio/timer_end.mp3'
+import timerEndSound from '@asset_timerEndSound'
 
 export const SoundContext = createContext();
 
@@ -44,12 +44,10 @@ const generateSoundObjects = (all_sounds) => {
 export const SoundProvider = ({children}) => {
     
     const [soundObjects, setSoundObjects] = useState(generateSoundObjects(sound_paths));
-    console.log(soundObjects)
 
     const soundFunctions = {
         play: (soundName) => {
             Howler.stop();
-            console.log(soundObjects[soundName])
             soundObjects[soundName].play();
         },
     }
