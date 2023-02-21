@@ -6,15 +6,16 @@ import { MotionBox } from '../MotionComponents'
 import PartialScoreboard from './PartialScoreboard';
 import Timer from './Timer';
 import LightningQuestion from './LightningQuestion';
+import QuestionButton from './QuestionButton'
 import roundBacklights from "../../assets/images/round_backlights.gif"
 // import UnassignedPoints from './UnassignedPoints';
 import DelayedUnmount from '../DelayedUnmount';
-
 
 function LightningRound({index, round, ...props}) {
     const [config, configFunctions] = useContext(ConfigContext);
     const [soundFunctions] = useContext(SoundContext);
     const [currentPhase, setCurrentPhase] = useState('initial'); // initial
+    const [triggerReset, setTriggerReset] = useState(false);
 
     const animate = useMemo(() => {
         if (config.currentPage != 'round' || config.currentRound === undefined || config.currentRound < index) {
@@ -84,17 +85,26 @@ function LightningRound({index, round, ...props}) {
                             <Stack h='100%' w='100%' align='center' justify='center' p={1} >
                                 {[...round.questions.slice(0, 5), ...[...Array(5 - round.questions.slice(0, 5).length)].map(() => undefined)]
                                 .map((question, index) => 
-                                    <LightningQuestion key={index} index={index} question={question} />
+                                    <LightningQuestion key={index} index={index} question={question} triggerReset={triggerReset} />
                                 )}
                             </Stack>
                             <Stack h='100%' w='100%' align='center' justify='center' p={1} >
                                 {[...round.questions.slice(5), ...[...Array(5 - round.questions.slice(5).length)].map(() => undefined)]
                                 .map((question, index) => 
-                                    <LightningQuestion key={index} index={index + 5} question={question} />
+                                    <LightningQuestion key={index} index={index + 5} question={question} triggerReset={triggerReset} />
                                 )}
                             </Stack>
                         </Flex>
                     </Stack>
+                    <Flex pos='relative' align='center' justify='center' >
+                        <QuestionButton mt={2} 
+                            onClick={() => {
+                                setTriggerReset(!triggerReset)
+                            }}
+                        >
+                            Reset<br/>Questions
+                        </QuestionButton> 
+                    </Flex>
                 </Stack>
             </DelayedUnmount>
         </MotionBox>

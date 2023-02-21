@@ -12,7 +12,7 @@ import { SoundContext } from '../contexts/SoundContext';
 import { AiOutlinePlus } from 'react-icons/ai'
 import { ImCross } from 'react-icons/im'
 
-function LightningQuestion({index, question, ...props}) {
+function LightningQuestion({index, question, triggerReset, ...props}) {
     const [showQuestion, setShowQuestion] = useState(false);
     const [questionStatus, setQuestionStatus] = useState(undefined); // undefined, correct, wrong
     const [config, configFunctions] = useContext(ConfigContext);
@@ -21,7 +21,7 @@ function LightningQuestion({index, question, ...props}) {
     useEffect(() => {
         setShowQuestion(false)
         setQuestionStatus(undefined)
-    }, [config.currentPage, config.currentRound])
+    }, [config.currentPage, config.currentRound, triggerReset])
 
     // const [correctSoundObject, setCorrectSoundObject] = useState(new Howl({
     //     src: [correctSound],

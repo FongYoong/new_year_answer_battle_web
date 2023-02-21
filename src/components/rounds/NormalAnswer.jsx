@@ -10,14 +10,14 @@ import { MotionBox } from '../MotionComponents'
 import { ConfigContext } from '../contexts/ConfigContext'
 import { SoundContext } from '../contexts/SoundContext';
 
-function NormalAnswer({index, answer, onClick, ...props}) {
+function NormalAnswer({index, answer, onClick, triggerReset, ...props}) {
     const [showAnswer, setShowAnswer] = useState(false);
     const [config, configFunctions] = useContext(ConfigContext);
     const [soundFunctions] = useContext(SoundContext);
 
     useEffect(() => {
         setShowAnswer(false)
-    }, [config.currentPage, config.currentRound])
+    }, [config.currentPage, config.currentRound, triggerReset])
 
     // const [revealSoundObject, setRevealSoundObject] = useState(new Howl({
     //     src: [revealSound],

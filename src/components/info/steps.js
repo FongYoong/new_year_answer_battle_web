@@ -85,7 +85,7 @@ export const normal_round_steps = [
     },
     {
         target: '#round_strike_button',
-        content: 'Click this to strike.',
+        content: 'Click this button when a team gets an incorrect answer to record a strike.',
     },
     ...round_navigator_steps,
     ...global_steps

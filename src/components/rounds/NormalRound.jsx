@@ -27,6 +27,7 @@ function NormalRound({index, round, ...props}) {
     const [currentPhase, setCurrentPhase] = useState('initial'); // initial, show_question, hide_question
     const [unassignedPoints, setUnassignedPoints] = useState(0);
     const [strikes, setStrikes] = useState(0);
+    const [triggerReset, setTriggerReset] = useState(false);
     const questionTypingInstanceRef = useRef()
 
     const animate = useMemo(() => {
@@ -127,13 +128,13 @@ function NormalRound({index, round, ...props}) {
                                     <Stack h='100%' w='100%' align='center' justify='center' p={1} >
                                         {[...round.answers.slice(0, 5), ...[...Array(5 - round.answers.slice(0, 5).length)].map(() => undefined)]
                                         .map((answer, index) => 
-                                            <NormalAnswer key={index} index={index} answer={answer} onClick={onClickAnswer} />
+                                            <NormalAnswer key={index} index={index} answer={answer} onClick={onClickAnswer} triggerReset={triggerReset} />
                                         )}
                                     </Stack>
                                     <Stack h='100%' w='100%' align='center' justify='center' p={1} >
                                         {[...round.answers.slice(5), ...[...Array(5 - round.answers.slice(5).length)].map(() => undefined)]
                                         .map((answer, index) => 
-                                            <NormalAnswer key={index} index={index + 5} answer={answer} onClick={onClickAnswer} />
+                                            <NormalAnswer key={index} index={index + 5} answer={answer} onClick={onClickAnswer} triggerReset={triggerReset} />
                                         )}
                                     </Stack>
                                 </Flex>
@@ -230,6 +231,13 @@ function NormalRound({index, round, ...props}) {
                             }}
                         >
                             Hide<br/>Question
+                        </QuestionButton>
+                        <QuestionButton 
+                            onClick={() => {
+                                setTriggerReset(!triggerReset)
+                            }}
+                        >
+                            Reset<br/>Question
                         </QuestionButton>
                         <Strikes show={show} ml={8} strikes={strikes} onClick={onClickStrike} />
                     </Flex>

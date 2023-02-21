@@ -1,0 +1,42 @@
+{
+    "@asset_globeImage": {
+        "path": "",
+        "default": "src/assets/images/globe.png"
+    },
+    "@asset_backgroundImage": {
+        "path": "",
+        "default": "src/assets/images/background.jpg"
+    },
+    "@asset_themeRoundSound": {
+        "path": "",
+        "default": "src/assets/audio/theme_round.mp3"
+    },
+    "@asset_winSound": {
+        "path": "",
+        "default": "src/assets/audio/response_win.mp3"
+    },
+    "@asset_loseSound": {
+        "path": "",
+        "default": "src/assets/audio/response_lose.mp3"
+    },
+    "@asset_cheerSound": {
+        "path": "",
+        "default": "src/assets/audio/response_cheer.mp3"
+    },
+    "@asset_booSound": {
+        "path": "",
+        "default": "src/assets/audio/response_boo.mp3"
+    },
+    "@asset_correctSound": {
+        "path": "",
+        "default": "src/assets/audio/reveal_answer.mp3"
+    },
+    "@asset_wrongSound": {
+        "path": "",
+        "default": "src/assets/audio/response_wrong.mp3"
+    },
+    "@asset_timerEndSound": {
+        "path": "",
+        "default": "src/assets/audio/timer_end.mp3"
+    }
+}

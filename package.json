@@ -24,7 +24,8 @@
     "react-joyride": "^2.5.3",
     "react-new-window": "^1.0.1",
     "typeit-react": "^2.6.4",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "vite-plugin-ejs": "^1.6.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",

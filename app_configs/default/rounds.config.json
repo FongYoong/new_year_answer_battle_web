@@ -1,0 +1,186 @@
+[
+    {
+        "type": "normal",
+        "question": "Name a common New Year's Resolution",
+        "answers": [
+            {
+                "answer": "Lose weight / Exercise",
+                "points": 100
+            },
+            {
+                "answer": "Save money",
+                "points": 90
+            },
+            {
+                "answer": "More time with friends/family",
+                "points": 80
+            },
+            {
+                "answer": "New job",
+                "points": 70
+            },
+            {
+                "answer": "Get organized",
+                "points": 60
+            },
+            {
+                "answer": "Break habits",
+                "points": 50
+            },
+            {
+                "answer": "Travel more",
+                "points": 40
+            },
+            {
+                "answer": "Read more",
+                "points": 30
+            }
+        ]
+    },
+    {
+        "type": "normal",
+        "question": "Name something people do right when New Year comes",
+        "answers": [
+            {
+                "answer": "Kiss",
+                "points": 100
+            },
+            {
+                "answer": "Shout \"Happy New Year!\"",
+                "points": 90
+            },
+            {
+                "answer": "Light fireworks",
+                "points": 80
+            },
+            {
+                "answer": "Make loud noises",
+                "points": 70
+            },
+            {
+                "answer": "Toast / Drink",
+                "points": 60
+            }
+        ]
+    },
+    {
+        "type": "lightning",
+        "time": 60,
+        "questions": [
+            {
+                "question": "Capital of California",
+                "answer": "Sacramento"
+            },
+            {
+                "question": "Longest river in U.S",
+                "answer": "Missouri River"
+            },
+            {
+                "question": "Biggest state",
+                "answer": "Alaska"
+            },
+            {
+                "question": "50th state",
+                "answer": "Hawaii"
+            },
+            {
+                "question": "State farthest south",
+                "answer": "Hawaii"
+            },
+            {
+                "question": "State with Mt. Rushmore",
+                "answer": "South Dakota"
+            },
+            {
+                "question": "City of Brotherly Love",
+                "answer": "Philadelphia"
+            },
+            {
+                "question": "City called the Big Apple",
+                "answer": "New York"
+            },
+            {
+                "question": "U.S city not in a state",
+                "answer": "Washington D.C."
+            },
+            {
+                "question": "Capital of Idaho",
+                "answer": "Boise"
+            }
+        ]
+    },
+    {
+        "type": "normal",
+        "question": "Name a common New Year's noise maker",
+        "answers": [
+            {
+                "answer": "Fireworks",
+                "points": 100
+            },
+            {
+                "answer": "Kazoos",
+                "points": 90
+            },
+            {
+                "answer": "Trumpets / Instruments",
+                "points": 80
+            },
+            {
+                "answer": "Pots & Pans",
+                "points": 70
+            },
+            {
+                "answer": "Guns",
+                "points": 60
+            }
+        ]
+    },
+    {
+        "type": "normal",
+        "question": "Name Something You Would Buy A Lot Of When Hosting A New Year’s Party",
+        "answers": [
+            {
+                "answer": "Drinks",
+                "points": 100
+            },
+            {
+                "answer": "Food",
+                "points": 90
+            },
+            {
+                "answer": "Decorations",
+                "points": 80
+            },
+            {
+                "answer": "Utensils",
+                "points": 70
+            },
+            {
+                "answer": "Noise makers",
+                "points": 60
+            }
+        ]
+    },
+    {
+        "type": "normal",
+        "question": "Name a popular New Year’s Eve TV host",
+        "answers": [
+            {
+                "answer": "Dick Clark",
+                "points": 100
+            },
+            {
+                "answer": "Ryan Seacrest",
+                "points": 90
+            },
+            {
+                "answer": "Carson Daily",
+                "points": 80
+            },
+            {
+                "answer": "Anderson Cooper",
+                "points": 70
+            }
+        ]
+    }
+]

@@ -27,10 +27,10 @@ function UnassignedPoints({show, unassignedPoints, setUnassignedPoints, ...props
             </Text>
             <Flex w='100%' align='center' justify='flex-end' >
                 <Button id={show?'normal_round_unassigned_points_reset_button':''}
-                    size='md' colorScheme='pink' mr={1} 
+                    size='md' fontSize={['xs', 'md']} colorScheme='pink' mr={1} wordBreak='break-word' whiteSpace='normal'
                     onClick={() => setUnassignedPoints(0)}
                 >
-                    Reset
+                    Reset Unassigned Points
                 </Button>
                 <Popover isLazy arrowSize={16} >
                     <PopoverTrigger>
