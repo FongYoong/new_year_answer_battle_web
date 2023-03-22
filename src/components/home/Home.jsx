@@ -1,6 +1,7 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { Button, Flex, Stack, useToast } from "@chakra-ui/react"
 import { ConfigContext } from '../contexts/ConfigContext'
+import { SoundContext } from '../contexts/SoundContext'
 import Globe from './Globe'
 import Curtains from './Curtains'
 import PlayButton from './PlayButton'
@@ -13,7 +14,14 @@ function Home({...props}) {
 
     const toast = useToast();
     const [config, configFunctions] = useContext(ConfigContext);
+    const [soundFunctions] = useContext(SoundContext);
     const show = config.currentPage == 'home';
+
+    useEffect(() => {
+        if (show) {
+            soundFunctions.play('themeRound')
+        }
+    }, [show])
     
     return (
         <MotionBox

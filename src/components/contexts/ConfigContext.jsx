@@ -1,4 +1,5 @@
-import { useState, useEffect, useMemo, createContext } from 'react';
+import { useState, useEffect, useMemo, createContext, useContext } from 'react';
+import { SoundContext } from '../contexts/SoundContext'
 import { default_rounds } from '../../lib/rounds'
 import { load_config_local_storage, save_config_local_storage, load_config_file, save_config_file } from '../../lib/config';
 
@@ -16,7 +17,7 @@ export const initial_config = {
 
 export const ConfigContext = createContext();
 
-export function generateConfigFunctions (config, setConfig) {
+export function generateConfigFunctions (config, setConfig, soundFunctions) {
     return {
         viewHome: () => {
             setConfig((config) => {
@@ -41,6 +42,7 @@ export function generateConfigFunctions (config, setConfig) {
         // },
         playGame: () => {
             // Reset game state to default
+            soundFunctions.play('themeRound')
             setConfig({
                 ...config,
                 currentPage: 'round',
@@ -52,6 +54,7 @@ export function generateConfigFunctions (config, setConfig) {
             })
         },
         resumeGame: () => {
+            soundFunctions.play('themeRound')
             setConfig({
                 ...config,
                 currentPage: 'round',
@@ -60,9 +63,11 @@ export function generateConfigFunctions (config, setConfig) {
         nextRound: () => {
             let nextRound;
             if (config.currentRound !== undefined) {
+                soundFunctions.play('win')
                 nextRound = (config.currentRound < config.rounds.length - 1) ? config.currentRound + 1 : config.currentRound
             }
             else {
+                soundFunctions.play('themeRound')
                 nextRound = 0;
             }
             setConfig({
@@ -72,6 +77,7 @@ export function generateConfigFunctions (config, setConfig) {
             })
         },
         previousRound: () => {
+            soundFunctions.play('themeRound')
             setConfig({
                 ...config,
                 currentPage: config.currentRound == 0 ? 'home' : 'round',
@@ -86,6 +92,7 @@ export function generateConfigFunctions (config, setConfig) {
                 })
             }
             else {
+                soundFunctions.play('themeRound')
                 setConfig({
                     ...config,
                     currentPage: 'round',
@@ -118,7 +125,8 @@ export function generateConfigFunctions (config, setConfig) {
 export const ConfigProvider = ({children}) => {
     const [config, setConfig] = useState(initial_config);
     const [configLoaded, setConfigLoaded] = useState(false);
-    const configFunctions = useMemo(() => generateConfigFunctions(config, setConfig), [config, setConfig])
+    const [soundFunctions] = useContext(SoundContext);
+    const configFunctions = useMemo(() => generateConfigFunctions(config, setConfig, soundFunctions), [config, setConfig])
     
     useEffect(() => {
         if (configLoaded) {

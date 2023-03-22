@@ -16,7 +16,8 @@ function Soundboard({...props}) {
   return (
     <Flex w='100%' justify='flex-end' p={4} {...props} >
       <Flex id='soundboard' >
-        <SoundButton label={config.currentPage == 'home' ? 'Theme' : 'Win'} icon={buttonWinImage} sound={config.currentPage == 'home' ? 'themeRound' : 'win'} />
+        {/* <SoundButton label={config.currentPage == 'home' ? 'Theme' : 'Win'} icon={buttonWinImage} sound={config.currentPage == 'home' ? 'themeRound' : 'win'} /> */}
+        <SoundButton label='Theme' icon={buttonWinImage} sound={'themeRound'} />
         <SoundButton label='Lose' icon={buttonLoseImage} sound='lose' />
         <SoundButton label='Cheer' icon={buttonCheerImage} sound='cheer' />
         <SoundButton label='Boo' icon={buttonBooImage} sound='boo' />

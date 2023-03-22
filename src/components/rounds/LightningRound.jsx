@@ -25,7 +25,7 @@ function LightningRound({index, round, ...props}) {
             return'left'
         }
         else {
-            soundFunctions.play('themeRound')
+            // soundFunctions.play('themeRound')
             return 'show'
         }
     }, [config.currentPage, config.currentRound, index])
