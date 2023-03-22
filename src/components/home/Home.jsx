@@ -17,11 +17,9 @@ function Home({...props}) {
     const [soundFunctions] = useContext(SoundContext);
     const show = config.currentPage == 'home';
 
-    useEffect(() => {
-        if (show) {
-            soundFunctions.play('themeRound')
-        }
-    }, [show])
+    // useEffect(() => {
+    //     soundFunctions.play('themeRound')
+    // }, [])
     
     return (
         <MotionBox

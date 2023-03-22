@@ -20,6 +20,7 @@ export const ConfigContext = createContext();
 export function generateConfigFunctions (config, setConfig, soundFunctions) {
     return {
         viewHome: () => {
+            soundFunctions.play('themeRound')
             setConfig((config) => {
                 return  {
                     ...config,
@@ -85,6 +86,7 @@ export function generateConfigFunctions (config, setConfig, soundFunctions) {
             })
         },
         jumpToRound: (round_index) => {
+            soundFunctions.play('themeRound')
             if (round_index == 'home') {
                 setConfig({
                     ...config,
@@ -92,7 +94,6 @@ export function generateConfigFunctions (config, setConfig, soundFunctions) {
                 })
             }
             else {
-                soundFunctions.play('themeRound')
                 setConfig({
                     ...config,
                     currentPage: 'round',
